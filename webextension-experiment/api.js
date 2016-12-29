@@ -1,5 +1,5 @@
 "use strict";
-const {classes: Cc, interfaces: Ci, results: Cr, utils: Cu} = Components;
+const {Cu} = require('chrome');
 const {XPCOMUtils} = Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 Cu.import("resource://gre/modules/Services.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "ContextualIdentityService",
@@ -1475,3 +1475,5 @@ class API extends ExtensionAPI {
     return self;
   }
 }
+
+exports.contextualIdentities = API.getAPI();

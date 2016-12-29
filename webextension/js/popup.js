@@ -2,21 +2,31 @@
 const identityState = {
 };
 
+function query(details) {
+  console.log('popup, query, details: ', details);
+
+  return browser.runtime.sendMessage({method: 'query', arguments: details});
+}
+
+const contextualIdentities = {
+  query: query
+};
+
 function hideContainer(containerId) {
   const hideorshowIcon = document.querySelector(`#${containerId}-hideorshow-icon`);
 
   hideorshowIcon.src = '/img/container-unhide.svg';
-  browser.contextualIdentities.hide(containerId);
+  // browser.contextualIdentities.hide(containerId);
 }
 
 function showContainer(containerId) {
   const hideorshowIcon = document.querySelector(`#${containerId}-hideorshow-icon`);
 
   hideorshowIcon.src = '/img/container-hide.svg';
-  browser.contextualIdentities.show(containerId);
+  // browser.contextualIdentities.show(containerId);
 }
 
-browser.contextualIdentities.query({}).then(identities=> {
+contextualIdentities.query({}).then(identities=> {
   const identitiesListElement = document.querySelector('.identities-list');
 
   identities.forEach(identity=> {
