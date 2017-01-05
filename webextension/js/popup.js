@@ -83,11 +83,11 @@ browser.runtime.sendMessage({method: 'query'}).then(identities=> {
           data-identity-icon="${identity.icon}"
           data-identity-color="${identity.color}">
         </div>
+        <div class="newTab-icon hide">
+          <a href="#"><img class="newTab-icon-img" src="/img/container-add.svg" /></a>
+        </div>
       </td>
       <td>${identity.name}</td>
-      <td class="newtab">
-        <img src="/img/container-add.svg" class="icon newtab-icon" />
-      </td>
       <td class="hideorshow" >
         <img
           data-identity-cookie-store-id="${identity.cookieStoreId}"
@@ -105,6 +105,18 @@ browser.runtime.sendMessage({method: 'query'}).then(identities=> {
   const rows = identitiesListElement.querySelectorAll('tr');
 
   rows.forEach(row=> {
+    row.addEventListener('mouseenter', e=> {
+      const icon = e.target.querySelector('.userContext-icon');
+
+      icon.classList.remove('userContext-icon');
+      icon.classList.add('newTab-icon');
+    });
+    row.addEventListener('mouseleave', e=> {
+      const icon = e.target.querySelector('.newTab-icon');
+
+      icon.classList.remove('newTab-icon');
+      icon.classList.add('userContext-icon');
+    });
     row.addEventListener('click', e=> {
       const containerId = e.target.parentElement.parentElement.dataset.identityCookieStoreId;
 

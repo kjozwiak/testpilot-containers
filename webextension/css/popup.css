@@ -8,6 +8,10 @@ table {
   margin-bottom: 0;
 }
 
+.hide {
+  display: none;
+}
+
 .onboarding * {
   text-align: center;
 }
@@ -41,6 +45,21 @@ table.unstriped tbody tr {
   fill: var(--identity-icon-color);
   width: 32px;
   height: 32px;
+}
+
+.newTab-icon {
+  background-color: #8F8F8F;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.newTab-icon-img {
+  width: 16px;
+  height: 16px;
 }
 
 .edit-identities {
